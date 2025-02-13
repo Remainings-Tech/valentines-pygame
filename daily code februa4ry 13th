@@ -1,0 +1,87 @@
+#kenny
+#2/13/25
+#Mild: Classes and Objects with Hearts!Open the mild code below and get it working. You'll need to replace "dog.jpg" with an image of your own (or find a dog image and bring it into the folder). You might also need a font. Once the code works, complete the following steps:1) Instantiate and draw at least 4 more heart objects around the screen. 2) Create a new flower class. Then instantiate and draw several flower objects on the screen. import pygame
+#solo
+#45 minutes
+# Initialize Pygame
+pygame.init()
+pygame.display.set_caption("Valentine's Day Card")
+screen = pygame.display.set_mode((800, 800))
+font = pygame.font.Font('freesansbold.ttf', 32)
+img = pygame.image.load(r"C:\Users\802910\Desktop\Level-94-2.jpg")
+
+class Heart:
+    def __init__(self, x, y, color):
+        self.x = x
+        self.y = y
+        self.color = color
+    
+    def draw(self, surface):
+        left_circle_center = (self.x - 20, self.y)
+        right_circle_center = (self.x + 20, self.y)
+        triangle_points = [(self.x - 40, self.y + 5),
+                           (self.x + 40, self.y + 5),
+                           (self.x, self.y + 50)]
+        
+        pygame.draw.circle(surface, self.color, left_circle_center, 20)
+        pygame.draw.circle(surface, self.color, right_circle_center, 20)
+        pygame.draw.polygon(surface, self.color, triangle_points)
+
+# Create instances of Heart
+heart1 = Heart(50, 200, (250, 0, 0))
+heart2 = Heart(140, 150, (250, 0, 0))  # You can ask students to change positions and colors
+heart3 = Heart(640, 150, (250, 0, 0))
+heart4 = Heart(740, 200, (250, 0, 0))
+heart5 = Heart(50, 100, (250, 0, 0))
+heart6 = Heart(740, 100, (250, 0, 0))
+
+#------------------------------------------Draw everything
+heart1.draw(screen)
+heart2.draw(screen)
+heart3.draw(screen)
+heart4.draw(screen)
+heart5.draw(screen)
+heart6.draw(screen)
+
+
+#flower 1
+RED = (255,0,0)
+ORANGE = (156, 8, 20)
+GREEN = (30,179, 7)
+
+pygame.draw.rect(screen, (GREEN), (420, 220, 20, 150)) 
+pygame.draw.circle(screen, (RED), (410, 220), 20) 
+pygame.draw.circle(screen, (RED), (410, 180), 20) 
+pygame.draw.circle(screen, (RED), (450, 220), 20) 
+pygame.draw.circle(screen, (RED), (450, 180), 20) 
+pygame.draw.circle(screen, (ORANGE), (430, 200), 20) 
+pygame.draw.circle(screen, (RED), (430, 240), 20)  
+pygame.draw.circle(screen, (RED), (430, 160), 20) 
+pygame.draw.circle(screen, (RED), (200, 480), 20) 
+pygame.draw.circle(screen, (RED), (390, 200), 20)
+pygame.draw.circle(screen, (RED), (470, 200), 20)
+
+#flower 2
+RED = (252, 3, 111)
+ORANGE = (176, 12, 130)
+GREEN = (0,150, 0)
+
+pygame.draw.rect(screen, (GREEN), (230, 220, 20, 100)) #(190, 330) is my top left corner
+pygame.draw.circle(screen, (RED), (220, 220), 20) 
+pygame.draw.circle(screen, (RED), (220, 180), 20) 
+pygame.draw.circle(screen, (RED), (260, 180), 20) 
+pygame.draw.circle(screen, (RED), (260, 220), 20) 
+pygame.draw.circle(screen, (ORANGE), (240, 200), 20)
+ 
+  
+ 
+# End of draw----------------------------------------------
+
+text1 = font.render('I hate You!', True, (255, 255, 255))
+text2 = font.render('Happy Valentines Day(I dont like that day)', True, (255, 255, 255), (161, 161, 161))
+screen.blit(text1, (10, 10))
+screen.blit(text2, (100, 40))
+screen.blit(img, (100, 300))
+
+pygame.display.flip()
+pygame.time.wait(5000)
